@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Primary Meta Tags -->
+  <title>FillHarbor - Smart Form Filler & Bulk Submitter for Google Forms</title>
+  <meta name="title" content="FillHarbor - Smart Form Filler & Bulk Submitter for Google Forms">
+  <meta name="description"
+    content="Free, privacy-first browser extension to automatically fill and bulk-submit Google Forms and web surveys with realistic, localized response profiles. Built for researchers, testers, and developers.">
+  <meta name="keywords"
+    content="Google Forms auto filler, bulk form submitter, survey auto fill, mock data generator, Google Forms bot, survey tester, automatic form filler, realistic survey respondent, Chrome extension, Firefox addon">
+  <meta name="author" content="Pankaj Sagvekar">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://pankajsagvekar.github.io/fillharbor/">
+
+  <!-- Open Graph / Facebook / LinkedIn -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pankajsagvekar.github.io/fillharbor/">
+  <meta property="og:site_name" content="FillHarbor">
+  <meta property="og:title" content="FillHarbor - Smart Form Filler & Bulk Submitter for Google Forms">
+  <meta property="og:description"
+    content="Generate realistic, localized survey data and auto-submit Google Forms in seconds. 100% free, client-side, and private.">
+  <meta property="og:image" content="https://pankajsagvekar.github.io/fillharbor/assets/images/social-preview.png">
+
+  <!-- Twitter / X Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://pankajsagvekar.github.io/fillharbor/">
+  <meta name="twitter:title" content="FillHarbor - Smart Form Filler & Bulk Submitter for Google Forms">
+  <meta name="twitter:description"
+    content="Free, privacy-first browser extension to automatically fill and bulk-submit Google Forms with realistic, localized responses.">
+  <meta name="twitter:image" content="https://pankajsagvekar.github.io/fillharbor/assets/images/social-preview.png">
+
+  <!-- Theme Color & Mobile App Experience -->
+  <meta name="theme-color" content="#080808">
+  <meta name="color-scheme" content="dark">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="48x48" href="assets/images/icon48.png">
+  <link rel="apple-touch-icon" href="assets/images/icon128.png">
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <!-- Font preconnect & async load -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+
+  <!-- Schema.org JSON-LD Structured Data for Google Search -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "FillHarbor",
+    "operatingSystem": "Cross-platform (Google Chrome, Mozilla Firefox, Brave, Microsoft Edge, Opera)",
+    "applicationCategory": "DeveloperApplication",
+    "applicationSubCategory": "Productivity",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "Automatically fill and bulk-submit Google Forms and web surveys with realistic, localized response profiles. Built for researchers, testers, and survey developers.",
+    "url": "https://pankajsagvekar.github.io/fillharbor/",
+    "downloadUrl": "https://addons.mozilla.org/en-US/firefox/addon/fillharbor-bulk-form-filler/",
+    "softwareVersion": "1.1.0",
+    "license": "https://opensource.org/licenses/MIT",
+    "author": {
+      "@type": "Person",
+      "name": "Pankaj Sagvekar",
+      "url": "https://github.com/pankajsagvekar"
+    }
+  }
+  </script>
+</head>
+
+<body>
+
+  <!-- Background Ambient Glow -->
+  <div class="ambient-glow"></div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="#" class="brand" id="nav-brand">
+        <img src="assets/images/icon48.png" alt="FillHarbor Anchor Logo" width="28" height="28">
+        <span>FillHarbor</span>
+      </a>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="nav-menu" id="nav-menu">
+        <ul class="nav-links">
+          <li><a href="#features" id="nav-features">Features</a></li>
+          <li><a href="#demo" id="nav-demo">Live Simulation</a></li>
+          <li><a href="#chrome-install" id="nav-install">How to Install</a></li>
+          <li><a href="#privacy" id="nav-privacy">Privacy</a></li>
+          <li><a href="https://github.com/pankajsagvekar/fillharbor" target="_blank" rel="noopener"
+              id="nav-github">GitHub</a></li>
+        </ul>
+
+        <a href="https://addons.mozilla.org/en-US/firefox/addon/fillharbor-bulk-form-filler/" target="_blank"
+          rel="noopener" class="nav-cta" id="nav-get-ext">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          <span>Install Extension</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-pill">
+        <span class="pill-dot"></span>
+        <span>v1.1.0 Released — Works on Chrome, Firefox, Brave & Edge</span>
+      </div>
+
+      <h1>
+        Effortless Mock Data for <br>
+        <span class="gradient-text">Google Forms & Web Surveys</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Automatically fill and bulk-submit forms with realistic, localized profiles.
+        Tailored for researchers, survey creators, and QA engineers who need rapid test responses without repetitive
+        manual entry.
+      </p>
+
+      <div class="hero-actions">
+        <a href="https://addons.mozilla.org/en-US/firefox/addon/fillharbor-bulk-form-filler/" target="_blank"
+          rel="noopener" class="btn-primary" id="hero-cta-firefox">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z" />
+          </svg>
+          <span>Get for Firefox (One Click)</span>
+        </a>
+
+        <a href="#chrome-install" class="btn-secondary" id="hero-cta-chrome">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          <span>Install on Chrome (Free Manual)</span>
+        </a>
+      </div>
+
+      <div class="platform-badges">
+        <div class="platform-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          100% Free & Open Source
+        </div>
+        <div class="platform-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          Zero Tracking or Analytics
+        </div>
+        <div class="platform-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          Runs Completely Locally
+        </div>
+      </div>
+
+      <!-- Interactive Playground Simulation -->
+      <div class="showcase-wrapper" id="demo">
+        <!-- Extension Popup Mockup -->
+        <div class="showcase-sidebar">
+          <div class="mini-ext-card">
+            <div class="header">
+              <div class="title-group">
+                <img src="assets/images/icon16.png" alt="" width="16" height="16">
+                <strong>FillHarbor</strong>
+              </div>
+              <span class="badge" id="sim-badge">● Google Form</span>
+            </div>
+
+            <div class="control-group">
+              <label for="sim-country">Origin Region</label>
+              <select id="sim-country">
+                <option value="in" selected>🇮🇳 India</option>
+                <option value="us">🇺🇸 United States</option>
+                <option value="uk">🇬🇧 United Kingdom</option>
+                <option value="ca">🇨🇦 Canada</option>
+                <option value="de">🇩🇪 Germany</option>
+                <option value="global">🌐 Global Mix</option>
+              </select>
+            </div>
+
+            <div class="control-group">
+              <label for="sim-persona">Respondent Persona</label>
+              <select id="sim-persona">
+                <option value="balanced" selected>Balanced (Natural bell curve)</option>
+                <option value="student">Student (Academic / Youth)</option>
+                <option value="tech">Tech (Engineer / Developer)</option>
+                <option value="corporate">Corporate (Professional)</option>
+                <option value="medical">Medical (Healthcare)</option>
+                <option value="critical">Critical (Negative bias)</option>
+                <option value="agreeable">Agreeable (Positive bias)</option>
+              </select>
+            </div>
+
+            <div class="control-group">
+              <label for="sim-count">Responses Count</label>
+              <input type="number" id="sim-count" value="10" min="1" max="100">
+            </div>
+
+            <div class="action-row">
+              <button class="action-btn secondary" id="sim-btn-fill">⚡ Fill Once</button>
+              <button class="action-btn primary" id="sim-btn-auto">▶ Auto Submit</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Simulated Survey Output Preview -->
+        <div class="showcase-content">
+          <div class="sim-header">
+            <div>
+              <h3 style="font-size: 15px;">Simulated Form Target</h3>
+              <p style="font-size: 12px; color: var(--text-muted);">Real-time persona generation preview</p>
+            </div>
+            <div class="sim-status" id="sim-status-text">Ready to test</div>
+          </div>
+
+          <div class="sim-form">
+            <div class="sim-field">
+              <div class="sim-label">Full Name <span class="req-star">*</span></div>
+              <input type="text" class="sim-input" id="field-name" value="Priya Sharma" readonly>
+            </div>
+
+            <div class="sim-field">
+              <div class="sim-label">Email Address <span class="req-star">*</span></div>
+              <input type="text" class="sim-input" id="field-email" value="priya.sharma92@gmail.com" readonly>
+            </div>
+
+            <div class="sim-field">
+              <div class="sim-label">Organization / Institution <span class="req-star">*</span></div>
+              <input type="text" class="sim-input" id="field-org" value="National Institute of Health Sciences"
+                readonly>
+            </div>
+
+            <div class="sim-field">
+              <div class="sim-label">How satisfied are you with the platform experience? <span class="req-star">*</span>
+              </div>
+              <div class="sim-radio-group" id="likert-group">
+                <label class="sim-radio-option">
+                  <span class="sim-radio-box" data-val="1"></span> 1 (Poor)
+                </label>
+                <label class="sim-radio-option">
+                  <span class="sim-radio-box" data-val="2"></span> 2
+                </label>
+                <label class="sim-radio-option">
+                  <span class="sim-radio-box checked" data-val="3"></span> 3 (Neutral)
+                </label>
+                <label class="sim-radio-option">
+                  <span class="sim-radio-box" data-val="4"></span> 4
+                </label>
+                <label class="sim-radio-option">
+                  <span class="sim-radio-box" data-val="5"></span> 5 (Excellent)
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Grid -->
+  <section class="features-section" id="features">
+    <div class="container">
+      <div class="section-head">
+        <h2>Built for Speed, Accuracy, and Peace of Mind</h2>
+        <p>No more sitting and clicking through hundreds of survey pages manually. Let FillHarbor simulate genuine
+          response variance.</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
+          <h3>9 Realistic Personas</h3>
+          <p>Weight Likert ratings and option selection naturally according to personality profiles (Agreeable,
+            Critical, Student, Tech, Medical, etc.).</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+              </path>
+            </svg>
+          </div>
+          <h3>Localized Demographics</h3>
+          <p>Generates culturally realistic names, phone formats, regional cities, and institutions across 7 global
+            territories.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+          </div>
+          <h3>Multi-Page Automation</h3>
+          <p>Handles Google Forms section transitions automatically, advancing through "Next" prompts right until
+            submission confirmation.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+          </div>
+          <h3>Self-Healing Validation</h3>
+          <p>Detects missed required questions or server validation prompts and automatically retries before proceeding.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+          </div>
+          <h3>Paced Submission Cycles</h3>
+          <p>Choose between Fast (~1s), Normal (~2s), or Safe (~4s) intervals to maintain realistic submission spacing.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+          </div>
+          <h3>100% Client-Side Privacy</h3>
+          <p>Zero telemetry, no Google Analytics, no tracking cookies, and no backend servers. Everything executes
+            inside your local browser tab.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chrome Free Installation Guide -->
+  <section class="install-section" id="chrome-install">
+    <div class="container">
+      <div class="section-head">
+        <h2>Install on Chrome, Brave & Edge in 3 Steps</h2>
+        <p>No Chrome Web Store needed. Since FillHarbor is 100% open-source, you can load it in less than 30 seconds for
+          free.</p>
+      </div>
+
+      <div class="install-steps-grid">
+        <div class="install-step-card">
+          <div class="step-num">01</div>
+          <h3>Download Extension ZIP</h3>
+          <p>Get the latest production-ready package directly from GitHub.</p>
+          <a href="https://github.com/pankajsagvekar/fillharbor/archive/refs/heads/main.zip" target="_blank"
+            rel="noopener" class="step-cta">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Download ZIP (Unpack it)
+          </a>
+        </div>
+
+        <div class="install-step-card">
+          <div class="step-num">02</div>
+          <h3>Open Chrome Extensions</h3>
+          <p>In Chrome (or Brave/Edge), open a new tab and paste this address:</p>
+          <div class="code-pill">
+            <code>chrome://extensions</code>
+            <button class="copy-btn"
+              onclick="navigator.clipboard.writeText('chrome://extensions'); this.textContent='Copied!'; setTimeout(()=>this.textContent='Copy', 1500)">Copy</button>
+          </div>
+          <p style="font-size: 13px; margin-top: 12px;">Toggle <strong>Developer mode</strong> in the top-right corner
+            to <strong>ON</strong>.</p>
+        </div>
+
+        <div class="install-step-card">
+          <div class="step-num">03</div>
+          <h3>Click "Load unpacked"</h3>
+          <p>Click the <strong>Load unpacked</strong> button on the top-left, and select the unzipped
+            <code>fillharbor-main</code> folder.
+          </p>
+          <div class="install-tag">✓ Done! Pin the anchor icon to toolbar.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Privacy Commitment -->
+  <section class="privacy-section" id="privacy">
+    <div class="container">
+      <div class="privacy-banner">
+        <div>
+          <h2>Privacy by Architecture, Not Just by Policy</h2>
+          <p style="margin-top: 14px; margin-bottom: 24px;">
+            Unlike other automation tools that upload your form URLs or responses to remote servers, FillHarbor has zero
+            network dependencies.
+          </p>
+          <a href="https://github.com/pankajsagvekar/fillharbor" target="_blank" rel="noopener" class="btn-secondary"
+            style="font-size: 14px; padding: 10px 20px;">
+            Inspect Source Code on GitHub
+          </a>
+        </div>
+
+        <ul class="privacy-list">
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span><strong>No Remote Servers:</strong> No APIs, analytics endpoints, or external scripts are
+              loaded.</span>
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span><strong>Scoped Permissions:</strong> Strictly limited to Google Forms and active tabs.</span>
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span><strong>No Paywalls or Freemium:</strong> Free forever under the permissive MIT license.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <img src="assets/images/icon16.png" alt="" width="16" height="16">
+        <span>© 2026 FillHarbor. Released under the MIT License.</span>
+      </div>
+
+      <ul class="footer-links">
+        <li><a href="https://addons.mozilla.org/en-US/firefox/addon/fillharbor-bulk-form-filler/" target="_blank"
+            rel="noopener">Firefox Add-on</a></li>
+        <li><a href="https://github.com/pankajsagvekar/fillharbor" target="_blank" rel="noopener">GitHub Repository</a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+</body>
+
+</html>
