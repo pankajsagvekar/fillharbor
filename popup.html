@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FillHarbor</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #f5f5f5;
+      --surface:  #ffffff;
+      --border:   #d4d4d4;
+      --text:     #0a0a0a;
+      --text-2:   #525252;
+      --text-3:   #a3a3a3;
+      --radius:   8px;
+      --shadow:   0 1px 2px rgba(0,0,0,.06);
+    }
+
+    body {
+      width: 340px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      font-size: 13px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      padding: 14px;
+    }
+
+    /* Header */
+    .header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .logo { width: 30px; height: 30px; flex-shrink: 0; }
+    .logo img { width: 30px; height: 30px; display: block; border-radius: 50%; }
+    .header-text { flex: 1; }
+    .header-text h1 { font-size: 13px; font-weight: 700; letter-spacing: -0.2px; }
+    .header-text p  { font-size: 11px; color: var(--text-3); }
+
+    .status-pill {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 10.5px; font-weight: 500;
+      padding: 3px 8px; border-radius: 99px;
+      border: 1px solid var(--border);
+      background: var(--surface); color: var(--text-2);
+      white-space: nowrap;
+    }
+    .status-pill.active { background: #0a0a0a; border-color: #0a0a0a; color: #fff; }
+    .status-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--text-3); flex-shrink: 0; }
+    .status-pill.active .status-dot { background: #fff; }
+
+    .divider { height: 1px; background: var(--border); margin: 0 0 12px; }
+
+    /* Card */
+    .card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 12px;
+      margin-bottom: 8px; box-shadow: var(--shadow);
+    }
+    .section-label {
+      font-size: 9.5px; font-weight: 600; color: var(--text-3);
+      text-transform: uppercase; letter-spacing: .8px; margin-bottom: 8px;
+    }
+
+    /* Fields */
+    .field { margin-bottom: 8px; }
+    .field:last-child { margin-bottom: 0; }
+    .field label { display: block; font-size: 11px; font-weight: 500; color: var(--text-2); margin-bottom: 3px; }
+    .field-row { display: flex; gap: 8px; }
+    .field-row .field { flex: 1; margin-bottom: 0; }
+
+    /* Inputs */
+    select, input[type="number"] {
+      width: 100%; appearance: none;
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 6px; color: var(--text);
+      font-family: inherit; font-size: 12px; font-weight: 500;
+      padding: 6px 10px; outline: none; cursor: pointer;
+    }
+    .select-wrap { position: relative; }
+    .select-wrap select { padding-right: 24px; }
+    .select-wrap::after {
+      content: ''; position: absolute;
+      right: 9px; top: 50%; transform: translateY(-50%);
+      pointer-events: none; width: 0; height: 0;
+      border-left: 3.5px solid transparent;
+      border-right: 3.5px solid transparent;
+      border-top: 4px solid var(--text-3);
+    }
+    select:focus, input[type="number"]:focus { border-color: #0a0a0a; outline: none; }
+    input[type="number"]::-webkit-inner-spin-button { opacity: .4; }
+
+    /* Buttons */
+    .btn-row { display: flex; gap: 8px; margin-bottom: 8px; }
+    .btn {
+      flex: 1; display: inline-flex; align-items: center;
+      justify-content: center; gap: 5px;
+      padding: 7px 12px; border-radius: 6px;
+      font-family: inherit; font-size: 12px; font-weight: 600;
+      cursor: pointer; line-height: 1; border: none;
+    }
+    .btn svg { width: 12px; height: 12px; flex-shrink: 0; }
+
+    .btn-ghost {
+      background: var(--surface); color: var(--text-2);
+      border: 1px solid var(--border); box-shadow: var(--shadow);
+    }
+    .btn-ghost:hover { background: var(--bg); color: var(--text); }
+
+    .btn-primary { background: #0a0a0a; color: #fff; border: 1px solid #0a0a0a; }
+    .btn-primary:hover { background: #262626; }
+
+    .btn-danger {
+      width: 100%; display: inline-flex; align-items: center;
+      justify-content: center; gap: 5px;
+      padding: 7px 12px; border-radius: 6px; border: none;
+      font-family: inherit; font-size: 12px; font-weight: 600;
+      cursor: pointer; line-height: 1;
+      background: #fef2f2; color: #dc2626;
+      border: 1px solid #fca5a5; margin-bottom: 8px;
+    }
+    .btn-danger:hover { background: #fee2e2; }
+    .btn-danger svg { width: 12px; height: 12px; flex-shrink: 0; }
+
+    /* Progress */
+    .progress-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 12px;
+      box-shadow: var(--shadow); display: none;
+    }
+    .progress-header {
+      display: flex; align-items: center;
+      justify-content: space-between; margin-bottom: 7px;
+    }
+    .progress-title { font-size: 11px; font-weight: 600; }
+    .progress-count { font-size: 11px; font-weight: 600; font-variant-numeric: tabular-nums; }
+    .progress-track {
+      height: 4px; background: var(--border);
+      border-radius: 99px; overflow: hidden; margin-bottom: 8px;
+    }
+    .progress-fill { height: 100%; width: 0%; background: #0a0a0a; border-radius: 99px; }
+    .progress-fill.done { background: #16a34a; }
+
+    .status-msg {
+      font-size: 11px; font-weight: 500; color: var(--text-2);
+      padding: 6px 9px; border-radius: 6px;
+      background: var(--bg); border: 1px solid var(--border);
+      line-height: 1.4; word-break: break-word;
+    }
+    .status-msg.success { color: #16a34a; background: #f0fdf4; border-color: #bbf7d0; }
+    .status-msg.error   { color: #dc2626; background: #fef2f2; border-color: #fca5a5; }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="logo">
+      <img src="icons/icon48.png" alt="FillHarbor">
+    </div>
+    <div class="header-text">
+      <h1>FillHarbor</h1>
+      <p>Universal form auto-filler</p>
+    </div>
+    <span id="pageBadge" class="status-pill">
+      <span class="status-dot"></span>Checking…
+    </span>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="card">
+    <div class="section-label">Configuration</div>
+
+    <div class="field">
+      <label for="countrySelect">Origin Country</label>
+      <div class="select-wrap">
+        <select id="countrySelect">
+          <option value="in" selected>🇮🇳 India</option>
+          <option value="us">🇺🇸 United States</option>
+          <option value="uk">🇬🇧 United Kingdom</option>
+          <option value="ca">🇨🇦 Canada</option>
+          <option value="au">🇦🇺 Australia</option>
+          <option value="de">🇩🇪 Germany / Europe</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="personaSelect">Respondent Profile</label>
+      <div class="select-wrap">
+        <select id="personaSelect">
+          <option value="balanced" selected>⚖️ Natural Balanced</option>
+          <option value="doctor">🩺 Medical / Healthcare</option>
+          <option value="student">🎓 University Student</option>
+          <option value="academic">🔬 Researcher / Faculty</option>
+          <option value="tech">💻 IT Professional</option>
+          <option value="consumer">🛍️ General Consumer</option>
+          <option value="corporate">💼 Corporate Executive</option>
+          <option value="agreeable">👍 Highly Positive</option>
+          <option value="critical">👎 Skeptical / Critical</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label for="targetCount">Responses</label>
+        <input type="number" id="targetCount" value="10" min="1" max="1000">
+      </div>
+      <div class="field">
+        <label for="speedSelect">Pace</label>
+        <div class="select-wrap">
+          <select id="speedSelect">
+            <option value="fast">⚡ Fast (~1s)</option>
+            <option value="normal" selected>⏱ Normal (~2s)</option>
+            <option value="safe">🛡 Safe (~4s)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="btn-row" id="startRow">
+    <button id="btnFillOnce" class="btn btn-ghost">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+      </svg>
+      Fill Once
+    </button>
+    <button id="btnStart" class="btn btn-primary">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="5 3 19 12 5 21 5 3"/>
+      </svg>
+      Auto Submit
+    </button>
+  </div>
+
+  <button id="btnStop" class="btn-danger" style="display:none;">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="6" y="6" width="12" height="12" rx="1"/>
+    </svg>
+    Stop Submissions
+  </button>
+
+  <div id="progressBox" class="progress-card">
+    <div class="progress-header">
+      <span id="statusLabel" class="progress-title">Submitting…</span>
+      <span id="counterLabel" class="progress-count">0 / 10</span>
+    </div>
+    <div class="progress-track">
+      <div id="progressBar" class="progress-fill"></div>
+    </div>
+    <div id="statusDetail" class="status-msg">Ready to start</div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

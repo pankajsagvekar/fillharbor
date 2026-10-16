@@ -1,0 +1,20 @@
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Archives & build artifacts
+*.zip
+*.tar.gz
+*.crx
+
+# IDE & Editor configs
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Temporary / testing files
+scratch/
+test/
+*.log
