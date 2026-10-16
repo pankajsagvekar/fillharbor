@@ -1,4 +1,4 @@
-# FillHarbor — Website
+# FillHarbor Website
 
 This branch hosts the static website and live simulation playground for [FillHarbor](https://github.com/pankajsagvekar/fillharbor) deployed via GitHub Pages.
 
